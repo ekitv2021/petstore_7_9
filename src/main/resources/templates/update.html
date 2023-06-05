@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<th:block th:insert="layout :: bootstrap"></th:block>
+	</head>
+	<body>
+		<div class="container">
+			<th:block th:insert="layout :: navbar"></th:block>
+			<h1>Update Task</h1>
+			<form action="/updatetask" th:object="${taskObj}">
+				<input type="hidden" th:field="*{id}"/>
+				<div class="mb-3">
+				  <label for="taskName" class="form-label">Task Name</label>
+				  <input type="text" class="form-control" 
+				  	id="taskName" th:field="*{taskName}">
+				  	<!--initially th:field="*{taskName}" will call getTaskName
+				  	since here no value has been updated for this field
+				  	nothing will be display in the text
+				  	When you enter the text in this text, it will setTaskName-->
+				</div>
+				<div class="mb-3">
+				  <label for="status" class="form-label">Status</label>
+				  <select class="form-select" id="status" th:field="*{status}">
+					  <option value="Started">Started</option>
+					  <option value="In Progress">In Progress</option>
+					  <option value="Completed">Completed</option>
+					  <option value="In Review">In Review</option>
+				  </select>
+				</div>
+				<div class="mb-3">
+					<input type="submit" value="Update Task" class="btn btn-primary"/>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

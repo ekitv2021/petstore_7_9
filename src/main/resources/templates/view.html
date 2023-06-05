@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<th:block th:insert="layout :: bootstrap"></th:block>
+	</head>
+	<body>
+		<div class="container">
+			<th:block th:insert="layout :: navbar"></th:block>
+			<h1>View Task</h1>
+			<!--<h3><span th:text="${myname}"></span></h3>
+			<p th:text="${task.id}"></p>
+			<p th:text="${task.taskName}"></p>
+			<p th:text="${task.status}"></p>-->
+			
+			<!--<p th:text="${allTask[0].taskName}"></p>
+			<p th:text="${allTask[1].taskName}"></p>
+			<p th:text="${allTask[2].taskName}"></p>
+			<p th:text="${allTask[3].taskName}"></p>
+			<p th:text="${allTask[4].taskName}"></p>-->
+			
+			<table class="table">
+				<tr>
+					<th>ID</th>
+					<th>Task Name</th>
+					<th colspan="3">Status</th>
+				</tr>
+				<!--data rows will be created based on number of value in the list-->
+				<tr th:each="t : ${allTask}"><!--for(Task t : allTask)-->
+					<td th:text="${t.id}"></td>
+					<td th:text="${t.taskName}"></td>
+					<td th:text="${t.status}"></td>
+					<td><a class="btn btn-warning" 
+						th:href="@{/update/{id}(id=${t.id})}">Update</a></td>
+					<td><a class="btn btn-danger" 
+						th:href="@{/delete/{id}(id=${t.id})}">Delete</a></td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>
